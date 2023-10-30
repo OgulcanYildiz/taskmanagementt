@@ -34,43 +34,41 @@ class HomeFragment : Fragment() {
         val fabAddTask = root.findViewById<FloatingActionButton>(R.id.fab_add_task)
 
         fabAddTask.setOnClickListener {
-            // Görev ekleme dialog'unu oluşturun
+            // Görev ekleme dialog
             val dialog = Dialog(requireContext())
             dialog.setContentView(R.layout.add_task_dialog) // Özel tasarım dosyasını kullanın
 
-            // Görev başlığı ve açıklama alanlarını alın
+            // Görev başlığı açıklama alanları
             val taskTitleEditText = dialog.findViewById<EditText>(R.id.editTextTaskTitle)
             val taskDescriptionEditText = dialog.findViewById<EditText>(R.id.editTextTaskDescription)
 
-            // Dialog içindeki görev ekleme düğmesine tıklanınca ne olacağını belirleyin
             val addTaskButton = dialog.findViewById<Button>(R.id.button_add_task)
             addTaskButton.setOnClickListener {
-                // Kullanıcının girdiği görev bilgilerini alın
+                // Kullanıcının girdiği görev bilgilerini alma
                 val taskTitle = taskTitleEditText.text.toString()
                 val taskDescription = taskDescriptionEditText.text.toString()
 
-                // Burada kullanıcının girdiği görev bilgilerini kullanarak yeni görevi ekleyin
+                //yeni görevi ekle
                 val newTask = Task(id = generateRandomId(), title = taskTitle, description = taskDescription, status = TaskStatus.TO_DO)
                 taskList.add(newTask) // Örnek olarak taskList'e ekliyoruz, sizin kullanacağınız veri yapısına göre farklılık gösterebilir.
 
-                // RecyclerView'ı güncellemeyi unutmayın
                 taskAdapter.notifyDataSetChanged()
 
-                dialog.dismiss() // Dialog'u kapat
+                dialog.dismiss()
             }
 
-            dialog.show() // Dialog'u görüntüle
+            dialog.show()
         }
 
 
         recyclerView = root.findViewById(R.id.recycler_view_tasks)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        // TaskAdapter'ı oluştururken görev listesini sağlayın
+        // TaskAdapter'ı oluştururken görev listesini sağlama
         taskAdapter = TaskAdapter(taskList)
 
         taskAdapter.setOnItemClickListener{task: Task ->
-            // Task item'ına tıklandığında bu işlev çalışacak
+            // Task item'ına tıklandığında
             showTaskDetailsDialog(task)
         }
         recyclerView.adapter = taskAdapter
@@ -102,7 +100,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showTaskDetailsDialog(task: Task) {
-        // Task detaylarını gösteren bir diyalog oluşturun
+        // Task diyaloğu
         val dialog = AlertDialog.Builder(requireContext())
             .setTitle(task.title)
             .setMessage(task.description)

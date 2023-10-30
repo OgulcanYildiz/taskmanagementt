@@ -12,7 +12,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class TaskAdapter(private val taskList: MutableList<Task>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
-    // Tıklama işlevini tanımlamak için bir değişken ekleyin
+
     private var itemClickListener: ((Task) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (Task) -> Unit) {
@@ -25,7 +25,7 @@ class TaskAdapter(private val taskList: MutableList<Task>) : RecyclerView.Adapte
        // val statusTextView: TextView = itemView.findViewById(R.id.textStatus)
 
         init {
-            // ViewHolder'ın tümüne tıklama işlevini ekleyin
+
             itemView.setOnClickListener {
                 itemClickListener?.invoke(taskList[absoluteAdapterPosition])
             }
