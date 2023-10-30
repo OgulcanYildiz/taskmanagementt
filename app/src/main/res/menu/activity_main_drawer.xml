@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single" android:id="@+id/group1">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/baseline_person_24"
+            android:title="Profile" />
+    </group>
+    <group android:checkableBehavior="single" android:id="@+id/group2">
+        <item
+            android:id="@+id/nav_tasks"
+            android:icon="@drawable/baseline_task_24"
+            android:title="Tasks">
+            <menu>
+                <item
+                    android:id="@+id/nav_in_progress"
+                    android:icon="@drawable/baseline_pending_24"
+                    android:actionLayout="@layout/fragment_in_progress"
+                    android:title="In Progress"
+                    android:visible="true" />
+                <item
+                    android:id="@+id/nav_done"
+                    android:icon="@drawable/baseline_done_24"
+                    android:title="Done"
+                    android:visible="true" />
+            </menu>
+        </item>
+        </group>
+
+    <group android:checkableBehavior="single" android:id="@+id/group3">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/baseline_settings_24"
+            android:title="Settings" />
+    </group>
+    <group android:checkableBehavior="single" android:id="@+id/group4">
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/baseline_logout_24"
+            android:title="Logout" />
+    </group>
+</menu>
